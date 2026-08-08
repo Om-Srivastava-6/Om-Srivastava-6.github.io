@@ -224,73 +224,703 @@ a {
 }
 
 /* Computer Illustration */
+/* =========================================
+   HERO COMPUTER
+   ========================================= */
+
 .hero-visual {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    perspective: 1000px;
 }
 
 .computer-illustration {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
+
+
+/* =========================================
+   MAIN COMPUTER
+   ========================================= */
 
 .computer {
-    width: 280px;
-    background: linear-gradient(135deg, #8b7355 0%, #a0826d 100%);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    width: 330px;
     position: relative;
+
+    transform-style: preserve-3d;
+    transform-origin: center bottom;
+
+    animation: computerFloat 6s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 25px 25px rgba(0, 0, 0, 0.45));
 }
+
+
+/* =========================================
+   FLOATING / ROCKING ANIMATION
+   ========================================= */
+
+@keyframes computerFloat {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            rotateZ(0deg)
+            rotateY(0deg);
+    }
+
+    20% {
+        transform:
+            translate3d(-6px, -5px, 0)
+            rotateZ(-2.2deg)
+            rotateY(-1deg);
+    }
+
+    40% {
+        transform:
+            translate3d(-3px, -9px, 0)
+            rotateZ(-0.8deg)
+            rotateY(1deg);
+    }
+
+    50% {
+        transform:
+            translate3d(0, -10px, 0)
+            rotateZ(0deg)
+            rotateY(0deg);
+    }
+
+    70% {
+        transform:
+            translate3d(6px, -5px, 0)
+            rotateZ(2.2deg)
+            rotateY(-1deg);
+    }
+
+    85% {
+        transform:
+            translate3d(3px, -2px, 0)
+            rotateZ(0.8deg)
+            rotateY(1deg);
+    }
+
+    100% {
+        transform:
+            translate3d(0, 0, 0)
+            rotateZ(0deg)
+            rotateY(0deg);
+    }
+}
+
+
+/* =========================================
+   MONITOR
+   ========================================= */
+
+.monitor {
+    width: 100%;
+    height: 225px;
+
+    position: relative;
+    z-index: 2;
+
+    padding: 18px;
+
+    border-radius: 38px 38px 30px 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #b19b8d 0%,
+            #927b6d 35%,
+            #79665c 70%,
+            #66554e 100%
+        );
+
+    box-shadow:
+        inset 5px 5px 10px rgba(255, 255, 255, 0.22),
+        inset -7px -9px 15px rgba(0, 0, 0, 0.25),
+        0 12px 20px rgba(0, 0, 0, 0.3);
+
+    transform: translateZ(15px);
+}
+
+
+/* Top highlight */
+
+.monitor::before {
+    content: "";
+
+    position: absolute;
+
+    top: 7px;
+    left: 30px;
+    right: 30px;
+
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    filter: blur(5px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   SCREEN
+   ========================================= */
 
 .screen {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 15px;
-    min-height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
-    border: 2px solid #6b5d52;
+    width: 100%;
+    height: 100%;
+
+    padding: 7px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #191513,
+            #080706
+        );
+
+    border: 2px solid #3f332d;
+
+    box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, 0.95),
+        0 2px 3px rgba(255, 255, 255, 0.08);
 }
+
+
+/* Orange screen frame */
+
+.screen-glass {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 20px;
+
+    border: 2px solid #c56c27;
+
+    background:
+        radial-gradient(
+            circle at 75% 30%,
+            rgba(255, 135, 40, 0.14),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #17100c,
+            #090706
+        );
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset 0 0 18px rgba(255, 107, 30, 0.08),
+        0 0 8px rgba(255, 107, 30, 0.15);
+}
+
+
+/* CRT glass shine */
+
+.screen-glass::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,0.08),
+            transparent 20%,
+            transparent 75%,
+            rgba(255, 125, 50, 0.08)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   SCREEN CONTENT
+   ========================================= */
 
 .screen-content {
-    color: var(--accent-orange);
-    font-family: 'Courier New', monospace;
-    font-size: 1.2rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 16px;
+
+    font-family: "Courier New", monospace;
+
+    color: #ff8b3d;
+
+    text-shadow:
+        0 0 4px rgba(255, 110, 30, 0.7),
+        0 0 10px rgba(255, 80, 20, 0.25);
+
+    overflow: hidden;
 }
+
+
+.screen-title {
+    font-size: 1.15rem;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 9px;
+}
+
+
+.screen-text {
+    font-size: 7px;
+
+    line-height: 1.5;
+
+    opacity: 0.85;
+
+    letter-spacing: 0.5px;
+}
+
+
+.screen-cursor {
+    margin-top: 8px;
+
+    font-size: 11px;
+
+    animation: cursorBlink 1s steps(2) infinite;
+}
+
+
+@keyframes cursorBlink {
+
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   SCREEN GLOW
+   ========================================= */
+
+.screen-glass::after {
+    content: "";
+
+    position: absolute;
+
+    width: 70px;
+    height: 70px;
+
+    top: 15px;
+    right: 5px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 155, 70, 0.28),
+            rgba(255, 120, 40, 0.08) 35%,
+            transparent 70%
+        );
+
+    filter: blur(3px);
+
+    animation: screenGlow 4s ease-in-out infinite;
+}
+
+
+@keyframes screenGlow {
+
+    0%,
+    100% {
+        opacity: 0.35;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+
+/* =========================================
+   COMPUTER BASE
+   ========================================= */
+
+.computer-base {
+    width: 106%;
+
+    height: 115px;
+
+    margin-left: -3%;
+
+    margin-top: -2px;
+
+    position: relative;
+
+    z-index: 1;
+
+    border-radius: 18px 18px 25px 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #a38d7e,
+            #8c7669 45%,
+            #705d54
+        );
+
+    transform:
+        perspective(600px)
+        rotateX(7deg);
+
+    box-shadow:
+        inset 4px 5px 8px rgba(255,255,255,0.18),
+        inset -6px -8px 12px rgba(0,0,0,0.25),
+        0 10px 15px rgba(0,0,0,0.3);
+}
+
+
+/* =========================================
+   KEYBOARD AREA
+   ========================================= */
+
+.keyboard-area {
+    position: absolute;
+
+    top: 13px;
+    left: 17px;
+    right: 17px;
+    bottom: 13px;
+
+    border-radius: 10px;
+
+    border: 2px solid rgba(78, 60, 51, 0.65);
+
+    background:
+        linear-gradient(
+            145deg,
+            #9c8576,
+            #806b5f
+        );
+
+    box-shadow:
+        inset 0 2px 4px rgba(255,255,255,0.12),
+        inset 0 -3px 6px rgba(0,0,0,0.18);
+}
+
+
+/* =========================================
+   KEYBOARD
+   ========================================= */
 
 .keyboard {
-    height: 40px;
-    background: linear-gradient(to bottom, #9b8b7e, #7b6b5e);
-    border-radius: 0 0 15px 15px;
-    position: relative;
-}
-
-.keyboard::before {
-    content: '';
     position: absolute;
-    width: 90%;
-    height: 70%;
-    top: 15%;
-    left: 5%;
-    background: repeating-linear-gradient(
-        90deg,
-        #6b5b4e 0px,
-        #6b5b4e 20px,
-        #8b7b6e 20px,
-        #8b7b6e 22px
-    );
-    border-radius: 3px;
+
+    top: 10px;
+    left: 10px;
+
+    width: 67%;
+    height: 75px;
+
+    padding: 7px;
+
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #8b7467,
+            #735e54
+        );
+
+    border: 1px solid #5d4c45;
+
+    box-shadow:
+        inset 0 2px 3px rgba(255,255,255,0.1),
+        0 2px 3px rgba(0,0,0,0.2);
 }
 
+
+/* =========================================
+   KEY ROWS
+   ========================================= */
+
+.key-row {
+    display: flex;
+
+    gap: 3px;
+
+    height: 16px;
+
+    margin-bottom: 3px;
+}
+
+
+.key-row span {
+    flex: 1;
+
+    min-width: 0;
+
+    border-radius: 3px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #b29b8b,
+            #897265
+        );
+
+    border: 1px solid rgba(70, 52, 45, 0.5);
+
+    box-shadow:
+        0 2px 1px rgba(0,0,0,0.25),
+        inset 0 1px 1px rgba(255,255,255,0.2);
+
+    transition: transform 0.15s ease;
+}
+
+
+/* Give the keyboard a little visual variation */
+
+.key-row:nth-child(2) {
+    padding-left: 3px;
+}
+
+.key-row:nth-child(3) {
+    padding-left: 6px;
+}
+
+.key-row:nth-child(4) {
+    padding-left: 3px;
+}
+
+
+.space-key {
+    flex: 2.8 !important;
+}
+
+
+/* =========================================
+   TRACKBALL
+   ========================================= */
+
+.trackball {
+    position: absolute;
+
+    right: 21px;
+    top: 22px;
+
+    width: 43px;
+    height: 43px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #ff8170 0%,
+            #cf3b2d 25%,
+            #9f211b 55%,
+            #671612 100%
+        );
+
+    border: 2px solid #6c4137;
+
+    box-shadow:
+        inset -6px -7px 10px rgba(0,0,0,0.35),
+        inset 4px 3px 5px rgba(255,255,255,0.2),
+        0 3px 4px rgba(0,0,0,0.35);
+
+    transform: translateZ(5px);
+}
+
+
+/* Trackball highlight */
+
+.trackball::before {
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 6px;
+
+    top: 6px;
+    left: 9px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.3);
+
+    transform: rotate(-25deg);
+
+    filter: blur(1px);
+}
+
+
+/* =========================================
+   SMALL BUTTON
+   ========================================= */
+
+.trackball-button {
+    position: absolute;
+
+    right: 24px;
+    top: 73px;
+
+    width: 36px;
+    height: 8px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #887164,
+            #625149
+        );
+
+    border: 1px solid #51423c;
+
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.1),
+        0 2px 2px rgba(0,0,0,0.2);
+}
+
+
+/* =========================================
+   INDICATOR LIGHTS
+   ========================================= */
+
+.indicator-lights {
+    position: absolute;
+
+    right: 20px;
+    top: 9px;
+
+    display: flex;
+
+    gap: 4px;
+}
+
+
+.indicator-lights span {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #a8b52a;
+
+    box-shadow:
+        0 0 4px rgba(190, 210, 30, 0.7);
+
+    animation: indicatorBlink 3s ease-in-out infinite;
+}
+
+
+.indicator-lights span:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.indicator-lights span:nth-child(3) {
+    animation-delay: 1s;
+}
+
+
+@keyframes indicatorBlink {
+
+    0%,
+    70%,
+    100% {
+        opacity: 0.7;
+    }
+
+    80% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   HOVER
+   ========================================= */
+
+.computer:hover {
+    animation-play-state: paused;
+
+    transform:
+        translateY(-6px)
+        rotateZ(1deg)
+        rotateY(-2deg);
+
+    transition: transform 0.4s ease;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .computer {
+        width: 280px;
+    }
+
+    .monitor {
+        height: 195px;
+    }
+
+    .computer-base {
+        height: 100px;
+    }
+
+    .keyboard {
+        height: 65px;
+    }
+
+    .trackball {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .computer,
+    .screen-glass::after,
+    .screen-cursor,
+    .indicator-lights span {
+        animation: none;
+    }
+}
 /* =========================
    Projects Section
    ========================= */
