@@ -72,10 +72,11 @@ a {
 
 .nav-links {
     display: flex;
+    align-self: center;
     list-style: none;
-    gap: 2.5rem;
+    gap: 4.5rem;
     flex: 1;
-    margin-left: 4rem;
+    margin-left: 13rem;
 }
 
 .nav-links a {
